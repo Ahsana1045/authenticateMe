@@ -13,6 +13,8 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
+
+//KEEP TO TEST (MOD 5)
 router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
 });
