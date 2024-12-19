@@ -13,7 +13,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
@@ -35,5 +34,6 @@
     "dotenv-cli": "^7.4.4",
     "nodemon": "^3.1.7",
     "sqlite3": "^5.1.7"
-  }
+  },
+  "description": ""
 }
