@@ -21,5 +21,12 @@ router.get('/current', requireAuth, async (req, res) => {
                 'updatedAt'
             ],
         });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while fetching reviews.'})
     }
+
+
 });
+
+module.exports = router;
