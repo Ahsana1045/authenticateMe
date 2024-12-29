@@ -10,7 +10,9 @@ const { requireAuth } = require('../../utils/auth')
 
 router.get('/current', requireAuth, async (req, res) => {
     try {
+        const { user } = req
         const reviews = await Review.findAll({
+            where: {userId: user.id},
             attributes: [
                 'id',
                 'userId',
