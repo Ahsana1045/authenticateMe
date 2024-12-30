@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { Op } = require('sequelize');
+
 
 
 const { User } = require('../../db/models');
@@ -12,6 +14,8 @@ const { SpotImage } = require('../../db/models');
 const { Review } = require('../../db/models');
 
 const { requireAuth } = require('../../utils/auth');
+
+const { getSpots } = require('../../routes/controllers/spotController')
 
 // Route to get all spots
 router.get('/', async (req, res) => {
@@ -161,6 +165,10 @@ router.get('/:spotId', async (req, res) => {
         res.status(500).json({ error: 'An error occurred while fetching the spot details.' });
     }
 });
+
+
+// Route to handle GET requests for spots
+router.get('/', getSpots);
 
 //CREATE a spot:
 router.post('/', requireAuth, async (req, res) => {
