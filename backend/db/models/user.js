@@ -65,6 +65,7 @@ module.exports = (sequelize, DataTypes) => {
           exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt'],
         },
       },
+      schema: process.env.SCHEMA
     }
   );
   return User;
