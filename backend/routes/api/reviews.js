@@ -1,5 +1,6 @@
 // routes/api/reviews.js
 
+const { Op } = require("sequelize");
 const express = require('express');
 const router = express.Router();
 
@@ -100,6 +101,88 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
   }
 });
 
+
+
+router.put('/:reviewId', requireAuth, async (req, res) => {
+  try {
+    const { reviewId } = req.params; // Get review ID from URL
+    const { review, stars } = req.body; // Extract data from request body
+
+    // Validate input
+    if (!review || !stars || stars < 1 || stars > 5) {
+      return res.status(400).json({
+        message: "Validation error",
+        errors: {
+          review: "Review text is required",
+          stars: "Stars must be an integer from 1 to 5"
+        }
+      });
+    }
+
+    // Find the review by ID
+    const existingReview = await Review.findByPk(reviewId);
+
+    if (!existingReview) {
+      return res.status(404).json({ message: "Review couldn't be found" });
+    }
+
+    // Check if the logged-in user owns the review
+    if (existingReview.userId !== req.user.id) {
+      return res.status(403).json({ message: "Unauthorized to edit this review" });
+    }
+
+    // Update the review
+    existingReview.review = review;
+    existingReview.stars = stars;
+    await existingReview.save(); // Save changes to the database
+
+    // Return the updated review
+    res.status(200).json({
+      id: existingReview.id,
+      userId: existingReview.userId,
+      spotId: existingReview.spotId,
+      review: existingReview.review,
+      stars: existingReview.stars,
+      createdAt: existingReview.createdAt,
+      updatedAt: existingReview.updatedAt
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
+router.delete('/:reviewId', requireAuth, async (req, res) => {
+    try {
+      const { reviewId } = req.params; // Get the review ID from the URL
+
+      // Find the review by ID
+      const review = await Review.findByPk(reviewId);
+
+      // If the review doesn't exist, return a 404 error
+      if (!review) {
+        return res.status(404).json({ message: "Review couldn't be found" });
+      }
+
+      // Check if the logged-in user owns the review
+      if (review.userId !== req.user.id) {
+        return res.status(403).json({ message: "Unauthorized to delete this review" });
+      }
+
+      // Delete the review
+      await review.destroy();
+
+      // Respond with a success message
+      res.status(200).json({ message: "Successfully deleted" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
+
+
 module.exports = router;
 
 // Route to add an image URL to a review
@@ -136,7 +219,7 @@ module.exports = router;
 
 
 
-module.exports = router;
+// module.exports = router;
 //GET all Reiveiws by Spotid:
 // Route to get all reviews for a specific spot
 // router.get('/:spotId/reviews', async (req, res) => {

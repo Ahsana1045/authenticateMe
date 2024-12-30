@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 
       // Spot has many SpotImages
       Spot.hasMany(models.SpotImage, {
-        foreignKey: 'id',
+        foreignKey: 'spotId',  // Fixed the foreignKey here
         as: 'spotImages',
       });
     }

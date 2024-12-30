@@ -4,8 +4,8 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class SpotImage extends Model {
     static associate(models) {
-      // If you still want to associate SpotImage with Spot later, you can do so
-      // SpotImage.belongsTo(models.Spot, { foreignKey: 'spotId' });
+      // Associate SpotImage with Spot (foreign key: spotId)
+      SpotImage.belongsTo(models.Spot, { foreignKey: 'spotId' });
     }
   }
 
@@ -17,6 +17,14 @@ module.exports = (sequelize, DataTypes) => {
     preview: {
       type: DataTypes.BOOLEAN,
       allowNull: false, // Make preview required
+    },
+    spotId: {
+      type: DataTypes.INTEGER,
+      allowNull: false, // Make spotId required
+      references: {
+        model: 'Spots',
+        key: 'id',
+      },
     },
   }, {
     sequelize,
