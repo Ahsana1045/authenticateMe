@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'SpotImage',
+    modelName: 'SpotImages',
   });
 
   return SpotImage;
