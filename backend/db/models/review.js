@@ -4,18 +4,16 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Review extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+
     static associate(models) {
       // define association here
+
+
       Review.belongsTo(models.Spot, {
         foreignKey: 'spotId',
         as: 'spot', // Alias for association
       });
-      
+
        // Review belongs to User
       Review.belongsTo(models.User, {
       foreignKey: 'userId',
@@ -39,7 +37,10 @@ module.exports = (sequelize, DataTypes) => {
     review: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: false
+      unique: false,
+      validate: {
+        min: 10
+      }
     },
     stars: {
       type: DataTypes.INTEGER,
@@ -48,8 +49,12 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         min: 1,
         max: 5
-      }
-    }
+      },
+    },
+    imageUrl: {  // The column for the image URL
+      type: DataTypes.STRING,
+      allowNull: true,  // This is optional (not required to add an image)
+    },
   }, {
     sequelize,
     modelName: 'Review',

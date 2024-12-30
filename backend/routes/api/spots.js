@@ -217,6 +217,136 @@ router.post('/', requireAuth, async (req, res) => {
     }
 });
 
+// GET all reviews by spotId:
+router.get('/:spotId/reviews', async (req, res) => {
+  const { spotId } = req.params; // Extract spotId from URL params
+
+  try {
+    // Fetch all reviews for the given spotId
+    const reviews = await Review.findAll({
+      where: { spotId },
+      include: [
+        {
+          model: User,
+          as: 'user', // Include user information (e.g., name) for each review
+          attributes: ['id', 'firstName', 'lastName'], // Customize the attributes to return for the user
+        },
+        {
+          model: Spot,
+          as: 'spot', // Include spot information (e.g., name) for each review (optional)
+          attributes: ['id', 'name'],
+        },
+      ],
+    });
+
+    // If no reviews found, return a message
+    if (reviews.length === 0) {
+      return res.status(404).json({ message: 'No reviews found for this spot' });
+    }
+
+    // Return the reviews in the response
+    return res.status(200).json(reviews);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'An error occurred while retrieving reviews.' });
+  }
+});
+router.post('/:spotId/reviews', requireAuth, async (req, res) => {
+  try {
+    // Get spotId from request parameters and review data from the body
+    const { spotId } = req.params;
+    const { review, stars } = req.body;
+
+    // Check if the spot exists in the database
+    const spot = await Spot.findByPk(spotId);
+    if (!spot) {
+      return res.status(404).json({ message: 'Spot not found' });
+    }
+
+    // Get the authenticated user's ID
+    const userId = req.user.id;
+
+    // Check if the user has already left a review for this spot
+    const existingReview = await Review.findOne({
+      where: {
+        spotId: spotId,
+        userId: userId,
+      },
+    });
+
+    if (existingReview) {
+      return res.status(500).json({
+        message: 'User already has a review for this spot',
+      });
+    }
+
+    // Create a new review
+    const newReview = await Review.create({
+      userId,        // Set the userId (from the logged-in user)
+      spotId,        // Set the spotId (from the URL)
+      review,        // The review text
+      stars,         // The star rating (1-5)
+    });
+
+    return res.status(201).json(newReview); // Return the created review
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ message: 'Bad Request' });
+  }
+});
+
+
+// // POST route to create a review for a specific spot
+// router.post('/:spotId/reviews', requireAuth, async (req, res) => {
+//   try {
+//     // Get spotId from request parameters and review data from the body
+//     const { spotId } = req.params;
+//     const { review, stars } = req.body;
+
+
+
+//     // Check if the spot exists in the database
+//     const spot = await Spot.findByPk(spotId);
+//     if (!spot) {
+//       return res.status(404).json({ message: 'Spot not found' });
+//     }
+
+
+//     // Assuming you have some method to get the logged-in user (e.g., through a middleware)
+//     const userId = req.user.id;  // If you're using an authenticated user, otherwise set to a test user or from session
+
+//     // Check if the user has already left a review for this spot
+//     // const existingReview = await Review.findOne({
+//     //   where: {
+//     //     spotId: spotId,
+//     //     userId: user.id,
+//     //   },
+//     // });
+
+//     // if (existingReview) {
+//     //   return res.status(403).json({
+//     //     message: 'User already has a review for this spot.',
+//     //   });
+//     // }
+
+
+
+//     // Create a new review
+//     const newReview = await Review.create({
+//       userId,        // Set the userId (from the logged-in user)
+//       spotId,        // Set the spotId (from the URL)
+//       review,        // The review text
+//       stars,         // The star rating (1-5)
+//     });
+
+//     return res.status(201).json(newReview); // Return the created review
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(400).json({ message: 'Bad Request'});
+//   }
+// });
+
+
 // Add an image to a spot based on its ID
 router.post('/:spotId/images', async (req, res) => {
     const { spotId } = req.params;  // Extract spotId from the route parameter

@@ -38,10 +38,11 @@ router.get('/current', requireAuth, async (req, res) => {
         const formattedReviews = reviews.map((review) => {
             return {
                 id: review.id,
+                userId: review.userId,
                 spotId: review.spotId,
                 spotName: review.spot.name, // Access the spot's name from the associated model
-                rating: review.stars,
-                comment: review.review,
+                stars: review.stars,
+                review: review.review,
                 createdAt: review.createdAt,
                 updatedAt: review.updatedAt,
             };
@@ -56,7 +57,80 @@ router.get('/current', requireAuth, async (req, res) => {
     }
 });
 
+// Route to add an image URL to a review
+router.post('/:reviewId/images', async (req, res) => {
+    try {
+      const { reviewId } = req.params;  // Get reviewId from the URL parameter
+      const { url } = req.body;  // Get imageUrl from the request body
+
+      if (!url) {
+        return res.status(400).json({ error: 'Image URL is required.' });
+      }
+
+      // Find the review by ID
+      const review = await Review.findByPk(reviewId);
+
+      if (!review) {
+        return res.status(404).json({ error: 'Review not found.' });
+      }
+
+      // Update the review with the new image URL
+      review.url = url;
+      await review.save();
+
+      // Respond with the updated review data
+      return res.status(200).json({
+        id: review.id,
+        url: review.url,
+      });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'An error occurred while adding the image.' });
+    }
+  });
+
+
+
 module.exports = router;
+//GET all Reiveiws by Spotid:
+// Route to get all reviews for a specific spot
+// router.get('/:spotId/reviews', async (req, res) => {
+//     const { spotId } = req.params; // Extract spotId from URL params
+
+//     try {
+//       // Fetch all reviews for the given spotId
+//       const reviews = await Review.findAll({
+//         where: { spotId },
+//         include: [
+//           {
+//             model: User,
+//             as: 'user', // Include user information (e.g., name) for each review
+//             attributes: ['id', 'firstName', 'lastName'], // Customize the attributes to return for the user
+//           },
+//           {
+//             model: Spot,
+//             as: 'spot', // Include spot information (e.g., name) for each review (optional)
+//             attributes: ['id', 'name'],
+//           },
+//         ],
+//       });
+
+//       // If no reviews found, return a message
+//       if (reviews.length === 0) {
+//         return res.status(404).json({ message: 'No reviews found for this spot' });
+//       }
+
+//       // Return the reviews in the response
+//       return res.status(200).json(reviews);
+//     } catch (error) {
+//       console.error(error);
+//       return res.status(500).json({ error: 'An error occurred while retrieving reviews.' });
+//     }
+//   });
+
+// Route for creating review
+
+
 
 
 
