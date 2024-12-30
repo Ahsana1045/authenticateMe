@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     spotId: {
       type: DataTypes.INTEGER,
-      allowNull: false, // Make spotId required
+      allowNull: true, // Make spotId required
       references: {
         model: 'Spots',
         key: 'id',
