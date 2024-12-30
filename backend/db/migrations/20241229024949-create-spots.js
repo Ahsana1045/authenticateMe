@@ -51,6 +51,17 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
+      avgRating: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        defaultValue: null
+      },
+      previewImage: {
+        allowNull: true,
+        type: Sequelize.STRING,
+        unique: false,
+        defalutValue: null
+      },
       price: {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: false
@@ -69,7 +80,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    
+
     await queryInterface.dropTable('Spots');
   }
 };

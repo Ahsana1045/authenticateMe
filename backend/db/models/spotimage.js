@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
       SpotImage.belongsTo(models.Spot, { foreignKey: 'spotId' });
     }
   }
-
   SpotImage.init({
     url: {
       type: DataTypes.STRING,
@@ -28,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'SpotImages',
+    modelName: 'SpotImage',
   });
 
   return SpotImage;

@@ -15,6 +15,15 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
+      spotId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Spots',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
