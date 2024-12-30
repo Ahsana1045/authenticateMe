@@ -16,17 +16,17 @@ module.exports = (sequelize, DataTypes) => {
         as: 'owner',
       });
 
-      // // Spot has many Reviews
-      // Spot.hasMany(models.Review, {
-      //   foreignKey: 'spotId',
-      //   as: 'reviews',
-      // });
+      // Spot has many Reviews
+      Spot.hasMany(models.Review, {
+        foreignKey: 'spotId',
+        as: 'reviews',
+      });
 
-      // // Spot has many SpotImages
-      // Spot.hasMany(models.SpotImage, {
-      //   foreignKey: 'spotId',
-      //   as: 'spotImages',
-      // });
+      // Spot has many SpotImages
+      Spot.hasMany(models.SpotImage, {
+        foreignKey: 'spotId',  // Fixed the foreignKey here
+        as: 'spotImages',
+      });
     }
   }
 
@@ -40,7 +40,9 @@ module.exports = (sequelize, DataTypes) => {
     lng: DataTypes.DECIMAL,
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
-    price: DataTypes.DECIMAL
+    price: DataTypes.DECIMAL,
+    avgRating: DataTypes.INTEGER,
+    previewImage: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Spot',
