@@ -16,17 +16,17 @@ module.exports = (sequelize, DataTypes) => {
         as: 'owner',
       });
 
-      // // Spot has many Reviews
-      // Spot.hasMany(models.Review, {
-      //   foreignKey: 'spotId',
-      //   as: 'reviews',
-      // });
+      // Spot has many Reviews
+      Spot.hasMany(models.Review, {
+        foreignKey: 'spotId',
+        as: 'reviews',
+      });
 
-      // // Spot has many SpotImages
-      // Spot.hasMany(models.SpotImage, {
-      //   foreignKey: 'spotId',
-      //   as: 'spotImages',
-      // });
+      // Spot has many SpotImages
+      Spot.hasMany(models.SpotImage, {
+        foreignKey: 'id',
+        as: 'spotImages',
+      });
     }
   }
 

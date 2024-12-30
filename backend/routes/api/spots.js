@@ -8,75 +8,77 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const { User } = require('../../db/models');
 const { Spot } = require('../../db/models');
-const { SpotImage } = require('../../db/models')
-const { requireAuth } = require('../../utils/auth')
+const { SpotImage } = require('../../db/models');
+const { Review } = require('../../db/models');
+
+const { requireAuth } = require('../../utils/auth');
 
 // Route to get all spots
 router.get('/', async (req, res) => {
-    try {
-        const spots = await Spot.findAll({
-            attributes: [
-                'id',
-                'ownerId',
-                'address',
-                'city',
-                'state',
-                'country',
-                'lat',
-                'lng',
-                'name',
-                'description',
-                'price',
-                'createdAt',
-                'updatedAt'
-            ]
-            // ,
-            // include: [
-            //     {
-            //         model: Review,
-            //         attributes: [], // Include no review attributes directly
-            //         required: false
-            //     },
-            //     {
-            //         model: SpotImage,
-            //         attributes: ['url'], // Include preview image URLs
-            //         where: { preview: true },
-            //         required: false, // If no preview image exists, still return the spot
-            //     },
-            // ],
-        });
+  try {
+      const spots = await Spot.findAll({
+          attributes: [
+              'id',
+              'ownerId',
+              'address',
+              'city',
+              'state',
+              'country',
+              'lat',
+              'lng',
+              'name',
+              'description',
+              'price',
+              'createdAt',
+              'updatedAt'
+          ],
+          // include: [
+          //     {
+          //         model: SpotImage,
+          //         as:'spotImages',
+          //         attributes: ['url'],
+          //         where: { preview: true }, // Include only preview images
+          //         required: false, // If no preview image exists, still return the spot
+          //     },
+          //     {
+          //         model: Review,
+          //         as: 'reviews',
+          //         attributes: [],
+          //         required: false, // If no reviews exist, still return the spot
+          //     }
+          // ],
+      });
 
-        // Map the results to include avgRating and previewImage
-        const formattedSpots = spots.map((spot) => {
-            const avgRating = spot.Reviews
-                ? spot.Reviews.reduce((sum, review) => sum + review.rating, 0) /
-                  spot.Reviews.length
-                : null;
+      // Map the results to include avgRating and previewImage
+      const formattedSpots = spots.map((spot) => {
+          const avgRating = spot.Reviews
+              ? spot.Reviews.reduce((sum, review) => sum + review.stars, 0) / spot.Reviews.length
+              : null;
 
-            return {
-                id: spot.id,
-                ownerId: spot.ownerId,
-                address: spot.address,
-                city: spot.city,
-                state: spot.state,
-                country: spot.country,
-                lat: spot.lat,
-                lng: spot.lng,
-                name: spot.name,
-                description: spot.description,
-                price: spot.price,
-                createdAt: spot.createdAt,
-                updatedAt: spot.updatedAt,
-                // avgRating: avgRating ? Number(avgRating.toFixed(1)) : null,
-                // previewImage: spot.SpotImages.length > 0 ? spot.SpotImages[0].url : null,
-            };
-        });
+          return {
+              id: spot.id,
+              ownerId: spot.ownerId,
+              address: spot.address,
+              city: spot.city,
+              state: spot.state,
+              country: spot.country,
+              lat: spot.lat,
+              lng: spot.lng,
+              name: spot.name,
+              description: spot.description,
+              price: spot.price,
+              createdAt: spot.createdAt,
+              updatedAt: spot.updatedAt,
+              // avgRating: avgRating ? Number(avgRating.toFixed(1)) : null,
+              // previewImage: spot.SpotImages.length > 0 ? spot.SpotImages[0].url : null,
+          };
+      });
 
-        res.status(200).json({ Spots: formattedSpots });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'An error occurred while fetching spots.' });
-    }
+      res.status(200).json({ Spots: formattedSpots });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'An error occurred while fetching spots.' });
+  }
 });
 
 //GETs spots of current user
