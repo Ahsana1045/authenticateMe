@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 const { User } = require('../../db/models');
-const { Spot, Review, SpotImage } = require('../../db/models');
+const { Spot, Review, SpotImage, ReviewImages } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 
 // Route to get all reviews of the current user
@@ -26,6 +26,7 @@ router.get('/current', requireAuth, async (req, res) => {
                     as: 'spot', // Ensure to use the alias from the model definition
                     attributes: ['id', 'name', 'address', 'city', 'state', 'country'], // Only include necessary attributes
                 },
+
             ],
         });
 
@@ -57,37 +58,81 @@ router.get('/current', requireAuth, async (req, res) => {
     }
 });
 
-// Route to add an image URL to a review
-router.post('/:reviewId/images', async (req, res) => {
-    try {
-      const { reviewId } = req.params;  // Get reviewId from the URL parameter
-      const { url } = req.body;  // Get imageUrl from the request body
 
-      if (!url) {
-        return res.status(400).json({ error: 'Image URL is required.' });
-      }
+// Add an image to a review
+router.post('/:reviewId/images', requireAuth, async (req, res) => {
+  try {
+    const { reviewId } = req.params;
+    const { url } = req.body;
 
-      // Find the review by ID
-      const review = await Review.findByPk(reviewId);
+    // Find the review
+    const review = await Review.findByPk(reviewId);
 
-      if (!review) {
-        return res.status(404).json({ error: 'Review not found.' });
-      }
-
-      // Update the review with the new image URL
-      review.url = url;
-      await review.save();
-
-      // Respond with the updated review data
-      return res.status(200).json({
-        id: review.id,
-        url: review.url,
-      });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: 'An error occurred while adding the image.' });
+    if (!review) {
+      return res.status(404).json({ message: 'Review not found' });
     }
-  });
+
+    // Ensure the user owns the review
+    if (review.userId !== req.user.id) {
+      return res.status(403).json({ message: 'Forbidden: You do not own this review' });
+    }
+
+    // Check if the review already has 10 images
+    const imageCount = await ReviewImages.count({ where: { reviewId } });
+    if (imageCount >= 10) {
+      return res.status(403).json({ message: 'Maximum number of images for this resource was reached' });
+    }
+
+    // Create the new review image
+    const newImage = await ReviewImages.create({
+      reviewId,
+      url,
+    });
+
+    // Respond with the created image
+    return res.status(201).json({
+      id: newImage.id,
+      url: newImage.url,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+module.exports = router;
+
+// Route to add an image URL to a review
+// router.post('/:reviewId/images', async (req, res) => {
+//     try {
+//       const { reviewId } = req.params;  // Get reviewId from the URL parameter
+//       const { url } = req.body;  // Get imageUrl from the request body
+
+//       if (!url) {
+//         return res.status(400).json({ error: 'Image URL is required.' });
+//       }
+
+//       // Find the review by ID
+//       const review = await Review.findByPk(reviewId);
+
+//       if (!review) {
+//         return res.status(404).json({ error: 'Review not found.' });
+//       }
+
+//       // Update the review with the new image URL
+//       review.url = url;
+//       await review.save();
+
+//       // Respond with the updated review data
+//       return res.status(200).json({
+//         id: review.id,
+//         url: review.url,
+//       });
+//     } catch (error) {
+//       console.error(error);
+//       return res.status(500).json({ error: 'An error occurred while adding the image.' });
+//     }
+//   });
 
 
 

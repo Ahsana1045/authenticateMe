@@ -18,7 +18,12 @@ module.exports = (sequelize, DataTypes) => {
       Review.belongsTo(models.User, {
       foreignKey: 'userId',
       as: 'user', // Alias for association
-  });
+      });
+      Review.hasMany(models.ReviewImages, {
+        foreignKey: 'reviewId',
+        as: 'ReviewImages',
+      });
+
 
 
     }
