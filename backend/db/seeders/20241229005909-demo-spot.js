@@ -1,12 +1,11 @@
 'use strict';
 require('dotenv').config();
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('Spots', [
       {
-        ownerId: 1,
+        ownerId: 1, // Ensure this matches a seeded user ID
         address: '123 Disney Lane',
         city: 'San Francisco',
         state: 'California',
@@ -20,7 +19,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        ownerId: 2,
+        ownerId: 2, // Ensure this matches a seeded user ID
         address: '12 choram',
         city: 'San jersey',
         state: 'NY',
@@ -34,24 +33,9 @@ module.exports = {
         updatedAt: new Date()
       }
     ]);
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
   },
 
   async down (queryInterface, Sequelize) {
     return queryInterface.bulkDelete('Spots', null, {});
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
   }
 };
