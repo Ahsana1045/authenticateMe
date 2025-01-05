@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   class SpotImage extends Model {
     static associate(models) {
       // Associate SpotImage with Spot (foreign key: spotId)
-      SpotImage.belongsTo(models.Spot, { foreignKey: 'spotId' });
+      SpotImage.belongsTo(models.Spot, { foreignKey: 'spotId', as: 'spot' });
     }
   }
   SpotImage.init({
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     spotId: {
       type: DataTypes.INTEGER,
-      allowNull: true, // Make spotId required
+      allowNull: false, // Make spotId required
       references: {
         model: 'Spots',
         key: 'id',

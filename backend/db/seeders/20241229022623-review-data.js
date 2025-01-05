@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 
 const { Review } = require('../models');
 const bcrypt = require("bcryptjs");
