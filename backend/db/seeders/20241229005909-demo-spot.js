@@ -19,7 +19,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        ownerId: 2, // Ensure this matches a seeded user ID
+        ownerId: 2, 
         address: '12 choram',
         city: 'San jersey',
         state: 'NY',
