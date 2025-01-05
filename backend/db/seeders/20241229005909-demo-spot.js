@@ -18,20 +18,20 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      {
-        ownerId: 2, 
-        address: '12 choram',
-        city: 'San jersey',
-        state: 'NY',
-        country: 'United States of America',
-        lat: 50.7645358,
-        lng: -20.4730327,
-        name: 'Long Island',
-        description: 'Place where trains are created',
-        price: 200.45,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }
+      // {
+      //   ownerId: 2,
+      //   address: '12 choram',
+      //   city: 'San jersey',
+      //   state: 'NY',
+      //   country: 'United States of America',
+      //   lat: 50.7645358,
+      //   lng: -20.4730327,
+      //   name: 'Long Island',
+      //   description: 'Place where trains are created',
+      //   price: 200.45,
+      //   createdAt: new Date(),
+      //   updatedAt: new Date()
+      // }
     ]);
   },
 

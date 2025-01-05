@@ -13,13 +13,13 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      {
-        spotId: 2,
-        url: 'https://example.com/another-spot-image.jpg',
-        preview: false,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }
+      // {
+      //   spotId: 2,
+      //   url: 'https://example.com/another-spot-image.jpg',
+      //   preview: false,
+      //   createdAt: new Date(),
+      //   updatedAt: new Date()
+      // }
     ]);
   },
 
