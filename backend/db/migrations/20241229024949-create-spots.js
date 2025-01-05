@@ -13,7 +13,7 @@ module.exports = {
       ownerId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users', // name of the existing table
+          model: 'User', // name of the existing table
           key: 'id'
         },
         // onUpdate: 'CASCADE',
