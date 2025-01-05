@@ -16,8 +16,8 @@ module.exports = {
           model: 'Users', // name of the existing table
           key: 'id'
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
+        // onUpdate: 'CASCADE',
+        // onDelete: 'SET NULL'
       },
       address: {
         type: Sequelize.STRING,
