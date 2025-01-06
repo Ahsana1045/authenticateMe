@@ -21,24 +21,26 @@ const { getSpots } = require('../../routes/controllers/spotController')
 router.get('/', async (req, res) => {
   try {
       const spots = await Spot.findAll({
-          attributes: [
-              'id',
-              'ownerId',
-              'address',
-              'city',
-              'state',
-              'country',
-              'lat',
-              'lng',
-              'name',
-              'description',
-              'price',
-              'avgRating',
-              'previewImage',
-              'createdAt',
-              'updatedAt'
-          ],
+          // attributes: [
+          //     'id',
+          //     'ownerId',
+          //     'address',
+          //     'city',
+          //     'state',
+          //     'country',
+          //     'lat',
+          //     'lng',
+          //     'name',
+          //     'description',
+          //     'price',
+          //     'avgRating',
+          //     'previewImage',
+          //     'createdAt',
+          //     'updatedAt'
+          // ],
           include: [
+              {model: User, as: 'owner'},
+
               {
                   model: SpotImage,
                   as:'SpotImages',
@@ -416,7 +418,7 @@ router.get('/:spotId', async (req, res, next) => {
 
 //CREATE a spot:
 
-router.post('/', requireAuth, async (req, res) => {
+router.post('/', requireAuth, handleValidationErrors, async (req, res) => {
     try {
         const { id: ownerId } = req.user; // Extract user ID from the authenticated user
         const {
@@ -466,7 +468,7 @@ router.post('/', requireAuth, async (req, res) => {
         res.status(201).json(newSpot);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'An error occurred while creating the spot.' });
+        res.status(500).json({ error: 'Bad Request' });
     }
 });
 
@@ -554,41 +556,99 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
 
 // Add an image to a spot based on its ID
-router.post('/:spotId/images', async (req, res) => {
-    const { spotId } = req.params;  // Extract spotId from the route parameter
-    const { url, preview } = req.body;
 
-    try {
-      // Check if the spot exists
-      const spot = await Spot.findByPk(spotId);
+router.post('/:spotId/images', requireAuth, handleValidationErrors, async (req, res) => {
+  const { spotId } = req.params;
+  const { url, preview } = req.body;
+  const userId = req.user.id; // Get the user ID from the authenticated user
 
-      if (!spot) {
-        return res.status(404).json({ message: "Spot coundn't be found" });
-      }
+  try {
+    // Check if the spot exists
+    const spot = await Spot.findByPk(spotId);
 
-      // Create the SpotImage associated with the spot
-      const newImage = await SpotImage.create({
-        url,
-        preview,
-        spotId, // Associate the image with the spot's id
-      });
-
-      // Return the image details in the required response format
-      return res.status(201).json({
-        id: newImage.id,
-        url: newImage.url,
-        preview: newImage.preview
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'An error occurred while adding the image.' });
+    if (!spot) {
+      return res.status(404).json({ message: "Spot couldn't be found" });
     }
-  });
+
+    // Check if the authenticated user is the owner of the spot
+    if (spot.ownerId !== userId) {
+      return res.status(403).json({ message: 'Forbidden: You are not the owner of this spot' });
+    }
+
+    // Create the SpotImage associated with the spot
+    const newImage = await SpotImage.create({
+      url,
+      preview,
+      spotId,
+    });
+
+    // Return the image details in the required response format
+    return res.status(201).json({
+      id: newImage.id,
+      url: newImage.url,
+      preview: newImage.preview,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while adding the image.' });
+  }
+});
+
+
+
+
+// router.post('/:spotId/images', requireAuth, handleValidationErrors, async (req, res) => {
+//     const { spotId } = req.params;  // Extract spotId from the route parameter
+//     const { url, preview } = req.body;
+
+//     try {
+//       // Check if the spot exists
+//       const spot = await Spot.findByPk(spotId);
+
+//       if (!spot) {
+//         return res.status(404).json({ message: "Spot coundn't be found" });
+//       }
+
+//       // Create the SpotImage associated with the spot
+//       const newImage = await SpotImage.create({
+//         url,
+//         preview,
+//         spotId, // Associate the image with the spot's id
+//       });
+
+//       // Return the image details in the required response format
+//       return res.status(201).json({
+//         id: newImage.id,
+//         url: newImage.url,
+//         preview: newImage.preview
+//       });
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ error: 'An error occurred while adding the image.' });
+//     }
+//   });
+
+
 
   // Route to update a spot by spotId
-router.put('/:spotId', async (req, res) => {
+
+  // Validation checks for the request body
+  const validateSpotUpdate = [
+    check('address').notEmpty().withMessage('Street address is required'),
+    check('city').notEmpty().withMessage('City is required'),
+    check('state').notEmpty().withMessage('State is required'),
+    check('country').notEmpty().withMessage('Country is required'),
+    check('lat').isFloat({ min: -90, max: 90 }).withMessage('Latitude is not valid'),
+    check('lng').isFloat({ min: -180, max: 180 }).withMessage('Longitude is not valid'),
+    check('name').isLength({ max: 50 }).withMessage('Name must be less than 50 characters'),
+    check('description').notEmpty().withMessage('Description is required'),
+    check('price').isFloat({ min: 0 }).withMessage('Price per day is required'),
+  ];
+
+  router.put('/:spotId', requireAuth, validateSpotUpdate, handleValidationErrors, async (req, res) => {
     const { spotId } = req.params;
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
+    const userId = req.user.id;
 
     try {
       // Find the spot by spotId
@@ -596,7 +656,12 @@ router.put('/:spotId', async (req, res) => {
 
       // If the spot doesn't exist, return a 404 error
       if (!spot) {
-        return res.status(404).json({ error: 'Spot not found' });
+        return res.status(404).json({ message: 'Spot couldn\'t be found' });
+      }
+
+      // Check if the authenticated user is the owner of the spot
+      if (spot.ownerId !== userId) {
+        return res.status(403).json({ message: 'Forbidden: You are not the owner of this spot' });
       }
 
       // Update the spot with the provided details
@@ -631,13 +696,76 @@ router.put('/:spotId', async (req, res) => {
       });
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ error: 'An error occurred while updating the spot.' });
+      return res.status(500).json({ message: 'Internal Server Error', error: 'An error occurred while updating the spot.' });
     }
   });
 
+  module.exports = router;
+
+
+
+
+
+
+
+
+  // router.put('/:spotId', requireAuth, handleValidationErrors, async (req, res) => {
+  //   const { spotId } = req.params;
+  //   const { address, city, state, country, lat, lng, name, description, price } = req.body;
+
+  //   try {
+  //     // Find the spot by spotId
+  //     const spot = await Spot.findByPk(spotId);
+
+  //     // If the spot doesn't exist, return a 404 error
+  //     if (!spot) {
+  //       return res.status(404).json({ error: 'Spot not found' });
+  //     }
+
+  //     if(spot.ownerId !== userId){
+  //       return res.status(403).json({message: "Forbidden"})
+  //     }
+
+
+  //     // Update the spot with the provided details
+  //     spot.address = address || spot.address;
+  //     spot.city = city || spot.city;
+  //     spot.state = state || spot.state;
+  //     spot.country = country || spot.country;
+  //     spot.lat = lat || spot.lat;
+  //     spot.lng = lng || spot.lng;
+  //     spot.name = name || spot.name;
+  //     spot.description = description || spot.description;
+  //     spot.price = price || spot.price;
+
+  //     // Save the updated spot
+  //     await spot.save();
+
+  //     // Return the updated spot in the specified format
+  //     return res.status(200).json({
+  //       id: spot.id,
+  //       ownerId: spot.ownerId,
+  //       address: spot.address,
+  //       city: spot.city,
+  //       state: spot.state,
+  //       country: spot.country,
+  //       lat: spot.lat,
+  //       lng: spot.lng,
+  //       name: spot.name,
+  //       description: spot.description,
+  //       price: spot.price,
+  //       createdAt: spot.createdAt,
+  //       updatedAt: spot.updatedAt,
+  //     });
+  //   } catch (error) {
+  //     console.error(error);
+  //     return res.status(500).json({ error: 'An error occurred while updating the spot.' });
+  //   }
+  // });
+
 
   //DELET a spot
-  router.delete('/:spotId', async (req, res) => {
+  router.delete('/:spotId',requireAuth, handleValidationErrors, async (req, res) => {
     const { spotId } = req.params;
 
     try {

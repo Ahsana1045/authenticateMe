@@ -39,7 +39,13 @@ module.exports = (sequelize, DataTypes) => {
     country: DataTypes.STRING,
     lat: DataTypes.DECIMAL,
     lng: DataTypes.DECIMAL,
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 50]
+      },
+    },
     description: DataTypes.TEXT,
     price: DataTypes.DECIMAL,
     avgRating: DataTypes.INTEGER,
