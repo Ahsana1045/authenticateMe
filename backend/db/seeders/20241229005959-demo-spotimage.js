@@ -1,6 +1,14 @@
 'use strict';
 require('dotenv').config();
 
+const { SpotImage } = require('../models');
+const bcrypt = require("bcryptjs");
+
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;
+}
+
 const spotimage = require("../models/spotimage");
 
 module.exports = {

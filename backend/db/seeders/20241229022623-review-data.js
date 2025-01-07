@@ -1,15 +1,20 @@
 'use strict';
+/** @type {import('sequelize-cli').Migration} */
 require('dotenv').config();
 
 const { Review } = require('../models');
 const bcrypt = require("bcryptjs");
 
-/** @type {import('sequelize-cli').Migration} */
-
 let options = {};
 if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
+  options.schema = process.env.SCHEMA;
 }
+
+
+// let options = {};
+// if (process.env.NODE_ENV === 'production') {
+//   options.schema = process.env.SCHEMA;  // define your schema in options object
+// }
 
 module.exports = {
   async up (queryInterface, Sequelize) {
