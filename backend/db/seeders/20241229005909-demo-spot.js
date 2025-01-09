@@ -11,7 +11,8 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('Spots', [
+    options.tableName = 'Spots';
+    return queryInterface.bulkInsert(options, [
       {
         ownerId: 1, // Ensure this matches a seeded user ID
         address: '123 Disney Lane',
@@ -48,7 +49,7 @@ module.exports = {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
       ownerId: { [Op.in]: [1, 2] }
-    }, {});
+    }, null);
   }
 };
 
