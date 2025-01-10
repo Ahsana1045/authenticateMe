@@ -90,7 +90,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     const review = await Review.findByPk(reviewId);
 
     if (!review) {
-      return res.status(404).json({ message: 'Review not found' });
+      return res.status(404).json({ message: 'Review couldn\'t be found' });
     }
 
     // Ensure the user owns the review
