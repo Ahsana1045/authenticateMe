@@ -48,7 +48,7 @@ module.exports = router;
 //   return res.json({ user: user });
 // });
 
-// GET /api/restore-user
+// // GET /api/restore-user
 // const { restoreUser } = require('../../utils/auth.js');
 
 // router.use(restoreUser);
