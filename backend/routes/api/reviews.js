@@ -9,54 +9,74 @@ const { User } = require('../../db/models');
 const { Spot, Review, SpotImage, ReviewImages } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 
-// Route to get all reviews of the current user
 router.get('/current', requireAuth, async (req, res) => {
-    try {
-        const { user } = req; // Get the authenticated user (from requireAuth middleware)
+  try {
+    const { user } = req; // Get the authenticated user (from requireAuth middleware)
 
-        if (!user) {
-            return res.status(401).json({ error: 'Unauthorized access.' });
+    // Fetch reviews by the current user
+    const reviews = await Review.findAll({
+      where: { userId: user.id },
+      include: [
+        {
+          model: Spot,
+          as: 'spot', // Use the alias defined in the model
+          attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'price', 'previewImage'],
+        },
+        {
+          model: User,
+          as: 'user', // Use the alias defined in the model
+          attributes: ['id', 'firstName', 'lastName'],
+        },
+        {
+          model: ReviewImages,
+          as: 'ReviewImages', // Use the alias defined in the model
+          attributes: ['id', 'url'],
         }
+      ],
+    });
 
-        // Fetch reviews by the current user
-        const reviews = await Review.findAll({
-            where: { userId: user.id }, // Make sure the userId matches the authenticated user
-            include: [
-                {
-                    model: Spot, // Include the spot associated with the review
-                    as: 'spot', // Ensure to use the alias from the model definition
-                    attributes: ['id', 'name', 'address', 'city', 'state', 'country'], // Only include necessary attributes
-                },
+    // Format the reviews according to the API docs
+    const formattedReviews = reviews.map(review => {
+      return {
+        id: review.id,
+        userId: review.userId,
+        spotId: review.spotId,
+        review: review.review,
+        stars: review.stars,
+        createdAt: review.createdAt,
+        updatedAt: review.updatedAt,
+        User: {
+          id: review.user.id,
+          firstName: review.user.firstName,
+          lastName: review.user.lastName
+        },
+        Spot: {
+          id: review.spot.id,
+          ownerId: review.spot.ownerId,
+          address: review.spot.address,
+          city: review.spot.city,
+          state: review.spot.state,
+          country: review.spot.country,
+          lat: review.spot.lat,
+          lng: review.spot.lng,
+          name: review.spot.name,
+          price: review.spot.price,
+          previewImage: review.spot.previewImage
+        },
+        ReviewImages: review.ReviewImages.map(image => ({
+          id: image.id,
+          url: image.url
+        }))
+      };
+    });
 
-            ],
-        });
+    // Return the formatted reviews
+    return res.status(200).json({ Reviews: formattedReviews });
 
-        // If no reviews are found
-        if (!reviews || reviews.length === 0) {
-            return res.status(404).json({ message: 'No reviews found for this user.' });
-        }
-
-        // Format the reviews
-        const formattedReviews = reviews.map((review) => {
-            return {
-                id: review.id,
-                userId: review.userId,
-                spotId: review.spotId,
-                spotName: review.spot.name, // Access the spot's name from the associated model
-                stars: review.stars,
-                review: review.review,
-                createdAt: review.createdAt,
-                updatedAt: review.updatedAt,
-            };
-        });
-
-        // Return the formatted reviews
-        res.status(200).json({ Reviews: formattedReviews });
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'An error occurred while fetching reviews.' });
-    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'An error occurred while fetching reviews.' });
+  }
 });
 
 
