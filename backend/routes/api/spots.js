@@ -73,30 +73,62 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    // Map the results to include avgRating and previewImage
-    const formattedSpots = spots.map((spot) => {
-      const avgRating = spot.Reviews
-        ? spot.Reviews.reduce((sum, review) => sum + review.stars, 0) / spot.Reviews.length
-        : null;
+    // // Map the results to include avgRating and previewImage
+    // const formattedSpots = spots.map((spot) => {
+    //   const avgRating = spot.Reviews
+    //     ? spot.Reviews.reduce((sum, review) => sum + review.stars, 0) / spot.Reviews.length
+    //     : null;
 
-      return {
-        id: spot.id,
-        ownerId: spot.ownerId,
-        address: spot.address,
-        city: spot.city,
-        state: spot.state,
-        country: spot.country,
-        lat: Number(spot.lat),
-        lng: Number(spot.lng),
-        name: spot.name,
-        description: spot.description,
-        price: spot.price,
-        createdAt: spot.createdAt,
-        updatedAt: spot.updatedAt,
-        avgRating: avgRating ? Number(avgRating.toFixed(1)) : null,
-        previewImage: spot.SpotImages.length > 0 ? spot.SpotImages[0].url : null,
-      };
-    });
+
+
+    //   return {
+    //     id: spot.id,
+    //     ownerId: spot.ownerId,
+    //     address: spot.address,
+    //     city: spot.city,
+    //     state: spot.state,
+    //     country: spot.country,
+    //     lat: Number(spot.lat),
+    //     lng: Number(spot.lng),
+    //     name: spot.name,
+    //     description: spot.description,
+    //     price: spot.price,
+    //     createdAt: spot.createdAt,
+    //     updatedAt: spot.updatedAt,
+    //     avgRating: avgRating ? Number(avgRating.toFixed(1)) : null,
+    //     previewImage: spot.SpotImages.length > 0 ? spot.SpotImages[0].url : null,
+    //   };
+    // });
+
+    // Map the results to include avgRating and previewImage
+const formattedSpots = spots.map((spot) => {
+  const avgRating = spot.Reviews
+    ? spot.Reviews.reduce((sum, review) => sum + review.stars, 0) / spot.Reviews.length
+    : null;
+
+  // Ensure lat and lng are numbers
+  const lat = spot.lat ? Number(spot.lat) : null;  // Changed this line
+  const lng = spot.lng ? Number(spot.lng) : null;  // Changed this line
+
+  return {
+    id: spot.id,
+    ownerId: spot.ownerId,
+    address: spot.address,
+    city: spot.city,
+    state: spot.state,
+    country: spot.country,
+    lat,  // Using the converted lat value
+    lng,  // Using the converted lng value
+    name: spot.name,
+    description: spot.description,
+    price: spot.price,
+    createdAt: spot.createdAt,
+    updatedAt: spot.updatedAt,
+    avgRating: avgRating ? Number(avgRating.toFixed(1)) : null,
+    previewImage: spot.SpotImages.length > 0 ? spot.SpotImages[0].url : null,
+  };
+});
+
 
     res.status(200).json({ Spots: formattedSpots, page: parseInt(page), size: parseInt(size) });
   } catch (error) {
