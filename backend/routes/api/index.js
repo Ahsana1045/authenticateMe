@@ -29,10 +29,15 @@ router.use('/reviews', reviewsRouter);
 
 router.use('/spot-images', spotImagesRouter);
 
-//KEEP TO TEST (MOD 5)
-router.post('/test', (req, res) => {
-  res.json({ requestBody: req.body });
-});
+// //KEEP TO TEST (MOD 5) in console with:
+//  window.csrfFetch('/api/test', {
+//   method: 'POST',
+//   body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
+// }).then(res => res.json()).then(data => console.log(data));
+
+// router.post('/test', (req, res) => {
+//   res.json({ requestBody: req.body });
+// });
 
 module.exports = router;
 
