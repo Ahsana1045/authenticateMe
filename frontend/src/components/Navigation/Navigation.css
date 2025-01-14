@@ -1,0 +1,50 @@
+/* Basic styling for the navigation bar */
+nav {
+    background-color: #333;
+    padding: 1rem;
+    color: #fff;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  li {
+    margin-right: 1rem;
+  }
+
+  a {
+    color: #fff; /* Change this to a contrasting color */
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Styling for profile dropdown */
+  .profile-dropdown {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    right: 1rem;
+    top: 4rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .profile-dropdown li {
+    margin-bottom: 0.5rem;
+  }
+
+  .profile-dropdown li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Hide dropdown menu */
+  .hidden {
+    display: none;
+  }
