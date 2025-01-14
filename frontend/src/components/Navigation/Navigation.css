@@ -1,50 +1,55 @@
 /* Basic styling for the navigation bar */
 nav {
-    background-color: #333;
-    padding: 1rem;
-    color: #fff;
-  }
+  background-color: #333;
+  padding: 1rem;
+  color: #fff;
+}
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
 
-  li {
-    margin-right: 1rem;
-  }
+li {
+  margin-right: 1rem;
+  position: relative; /* Ensure dropdown is positioned relative to its list item */
+}
 
-  a {
-    color: #fff; /* Change this to a contrasting color */
-    text-decoration: none;
-  }
+a {
+  color: #fff;
+  text-decoration: none;
+}
 
-  a:hover {
-    text-decoration: underline;
-  }
+a:hover {
+  text-decoration: underline;
+}
 
-  /* Styling for profile dropdown */
-  .profile-dropdown {
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    right: 1rem;
-    top: 4rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
+/* Styling for profile dropdown */
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  top: 100%; /* Position directly below the profile button */
+  left: 0%; /* Align with the left edge of the profile button */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Ensure it appears above other content */
+}
 
-  .profile-dropdown li {
-    margin-bottom: 0.5rem;
-  }
+.profile-dropdown li {
+  margin-bottom: 0.5rem;
+}
 
-  .profile-dropdown li:last-child {
-    margin-bottom: 0;
-  }
+.profile-dropdown li:last-child {
+  margin-bottom: 0;
+}
 
-  /* Hide dropdown menu */
-  .hidden {
-    display: none;
-  }
+/* Hide dropdown menu */
+.hidden {
+  display: none;
+}

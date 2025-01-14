@@ -6,7 +6,7 @@ import * as sessionActions from '../../store/session';
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const ulRef = useRef();
+  const ulRef = useRef(); // Create a reference for the dropdown menu
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Stop click propagation to document
@@ -39,7 +39,7 @@ function ProfileButton({ user }) {
       <button onClick={toggleMenu}>
         <FaUserCircle />
       </button>
-      <ul className={ulClassName} ref={ulRef}> {/* Attach the ref to the dropdown */}
+      <ul className={ulClassName} ref={ulRef}>
         <li>{user.username}</li>
         <li>{user.firstName} {user.lastName}</li>
         <li>{user.email}</li>
