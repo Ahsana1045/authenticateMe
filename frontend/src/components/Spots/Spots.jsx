@@ -16,6 +16,10 @@ const Spots = () => {
     dispatch(getAllSpots());
   }, [dispatch]);
 
+  // Check if allSpots is defined and has spots
+  console.log("SPOTSSSSSS: ", spots);
+
+
   // const handleDelete = (spotId) => {
   //   const remove = dispatch(deleteSpot(spotId));
   //   if (remove) {
@@ -43,4 +47,3 @@ const Spots = () => {
 };
 
 export default Spots;
-
