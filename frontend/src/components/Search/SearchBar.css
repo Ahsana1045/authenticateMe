@@ -1,0 +1,82 @@
+#search-bar-container {
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+  }
+
+  .search-bar-form {
+    border: 1px solid rgb(211, 211, 211);
+    /* border-radius: 50px; */
+    border-radius: 25px;
+    box-shadow: 2px 2px 2px rgb(211, 211, 211);
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px;
+
+  }
+
+  .search-bar-field {
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    /* border-radius: 5px; */
+    padding: 10px;
+    /* clip-path: polygon(30% 10%, 70% 10%, 100% 0, 100% 70%, 100% 100%, 0 100%, 0% 70%, 0 0); */
+  }
+
+  .search-bar-field:hover {
+    box-shadow: 2px 2px 2px rgb(236, 236, 236);
+    background-color: rgb(229, 228, 228);
+
+    input {
+      background-color: rgb(229, 228, 228);
+    }
+  }
+
+  .search-bar-field label {
+    /* border: 2px dashed pink; */
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  .search-bar-field input {
+    border: none;
+    padding-left: 20px;
+  }
+
+  .search-bar-button {
+    /* border: 2px dashed purple; */
+    border: none;
+    border-radius:10px;
+    color: white;
+    background-color: #fc807d;
+    padding: 10px;
+    padding-top: 18px;
+    height: 50px;
+    width: 50px;
+    font-size: 18px;
+    font-weight: bolder;
+    clip-path: polygon(30% 20%, 70% 20%, 100% 0, 100% 70%, 100% 100%, 0 100%, 0% 70%, 0 0);
+
+  }
+
+  .search-bar-button:hover {
+      background-color: #ff6562;
+  }
+
+  .search-bar-separator {
+      border-right: 1px solid grey;
+  }
+
+  /*
+
+  input[type='date']::before {
+      content: 'Add Dates';
+  } */

@@ -8,7 +8,7 @@ import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import { useModal } from "../../context/Modal";
 
 import StarDisplay from "./StarsDisplay";
-import BookingDetails from "../Booking/BookingDetails";
+// import BookingDetails from "../Booking/BookingDetails";
 
 import DeleteReviewModal from "../Reviews/DeleteReviewModal";
 import CreateReviewModal from "../Reviews/CreateNewReviewModal";
