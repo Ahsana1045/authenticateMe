@@ -1,0 +1,44 @@
+
+#delete-spot-modal {
+    border-radius: 10px;
+    background-color: white;
+}
+
+.delete-spot-confirmation {
+    /* border: solid 2px blue; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-button-confirm-yes {
+    border: none;
+    height: 35px;
+    background-color: red;
+    color: white;
+    box-shadow: 3px 3px 2px black;
+    transition: box-shadow 0.5s ease;
+    cursor: pointer;
+
+
+}
+
+.modal-button-confirm-yes:hover {
+    background-color: rgb(218, 0, 0);
+    box-shadow: 3px 3px 2px black;
+}
+
+.modal-button-confirm-no {
+    border: none;
+    height: 35px;
+    background-color: grey;
+    color: white;
+    box-shadow: 3px 3px 2px black;
+      transition: box-shadow 0.5s ease;
+    cursor: pointer;
+}
+
+.modal-button-confirm-no:hover {
+    background-color: rgb(110, 110, 110);
+
+}

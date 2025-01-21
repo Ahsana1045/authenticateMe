@@ -1,0 +1,39 @@
+#create-review-modal {
+    text-align: center;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+  }
+
+  .star-rating {
+    /* border: solid 2px yellow; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 25px;
+    gap: 5px;
+  }
+
+  .submit-review-button {
+    padding: 10px 20px;
+    background-color: red;
+    border: none;
+    box-shadow: 3px 3px 2px black;
+    width: auto;
+
+    color: white;
+    cursor: pointer;
+  }
+
+  .submit-review-button:hover {
+    background-color: rgb(255, 77, 77);
+  }
+
+
+  .submit-review-button:disabled {
+    background-color: grey;
+  }

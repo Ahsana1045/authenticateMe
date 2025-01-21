@@ -1,0 +1,224 @@
+
+
+
+#spot-detail-container {
+    /* border: solid 2px red; */
+      color: black;
+  }
+
+  .listing-name-container {
+      /* border: solid 2px yellow; */
+      padding-bottom: 20px;
+  }
+  .images-container {
+    /* border: solid 2px blue; */
+    display: flex;
+    gap: 8px;
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    align-items: center;
+    margin: 0 auto;
+    max-width: 100%;
+    height: 500px;
+    width: 100%;
+  }
+
+  .main-image-left {
+    /* border: dotted 2px grey; */
+    width:50%;
+    height: 100%;
+  }
+
+  .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      clip-path: polygon(30% 10%, 70% 10%, 100% 0, 100% 70%, 100% 100%, 0 100%, 0% 70%, 0 0);
+  }
+
+  .images-container-right {
+    /* border: dashed 2px orange; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    max-width: 500px;
+    height: 100%;
+    width: 50%;
+  }
+
+  .side-image {
+    /* border: dotted 2px green; */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* clip-path: polygon(30% 10%, 70% 10%, 100% 0, 100% 70%, 100% 100%, 0 100%, 0% 70%, 0 0); */
+
+  }
+
+  .location-info-container-mid {
+    /* border: solid 2px green; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 0;
+    /* border-bottom: solid 2px #B0B0B0; */
+  }
+
+  .owner-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cat-icon {
+  padding-top: 8px;
+  }
+
+  .reserve-container {
+    /* border: solid 2px rgb(25, 25, 25); */
+    border: solid 2px #fba7a6;
+    border-radius: 10px;
+    /* box-shadow: 2px 2px 2px 2px #ffdede; */
+    display: block;
+    width: 300px;
+    height: 100%;
+    margin-top: 20px;
+    padding: 30px;
+    /* Additional styles to override flex behavior */
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+
+  .reserve-container:hover{
+    box-shadow: 2px 2px 2px 2px #ffdede;
+
+  }
+
+
+  .reserve-top {
+    /* border: dotted 2px yellow; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 50px;
+    padding-bottom: 8px;
+  }
+
+  .reviews-details{
+    /* border: solid 1px green; */
+    display: flex;
+    gap: 2px;
+  }
+
+
+  .spot-details-star {
+    /* border: dotted 1px purple; */
+    /* padding-top: 2px; */
+    font-size: 20px;
+
+  }
+
+
+  .price-details {
+    /* border: solid 2px pink; */
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  .price-span-details {
+    /* border: dashed 2px red; */
+    font-size: 17px;
+    font-weight: lighter;
+  }
+  .reviews-details {
+    font-weight: bold;
+  }
+
+  .reserve-button {
+    border: none;
+    box-shadow: 2px 2px 2px rgb(222, 189, 189);
+    border-radius: 10px;
+    width: 280px;
+    color: white;
+    font-size: 12px;
+    background-color: #FC807D;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .reserve-button:hover {
+    background-color: #fa6e6b;
+  }
+
+  #reviews-container {
+    /* border: solid 2px red; */
+    padding: 10px;
+  }
+
+  .star-and-reviews-container {
+    /* border: solid 2px blue; */
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-bottom: 10px;
+  }
+
+
+  .review-from-cats-outer-container {
+    padding: 20px;
+    border: dashed 2px #fba7a6;
+    border-radius: 20px;
+    background-color: #fff1f1;
+    /* clip-path: polygon(10% 15%, 90% 15%, 100% 0, 100% 70%, 100% 100%, 0 100%, 0% 70%, 0 0); */
+
+    /* outline: 2px solid grey; */
+    /* outline-offset: -2px; */
+  }
+  .reviews-from-the-cats {
+    /* border: solid 2px pink; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* padding-top:50px; */
+  }
+
+  .actual-reviews {
+      /* border: solid 2px orange; */
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 20px;
+      padding-top: 30px;
+      background: white;
+      border-radius: 20px;
+      clip-path: polygon(5% 15%, 95% 15%, 100% 0, 100% 70%, 100% 100%, 0 100%, 0% 70%, 0 0);
+
+  }
+
+
+  .spots-review-delete-button{
+    border: none;
+    border-radius: 8px;
+    background-color: grey;
+    padding: 6px;
+    box-shadow: 2px 2px 2px rgb(214, 214, 214);
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .spots-review-delete-button:hover{
+    background-color: rgb(78, 78, 78);
+  }
+
+
+
+  @media screen and (min-width: 1000px) {
+    #spot-detail-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+  }

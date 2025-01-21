@@ -8,7 +8,7 @@ import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import { useModal } from "../../context/Modal";
 
 import StarDisplay from "./StarsDisplay";
-import BookingDetails from "../Booking/BookingDetails";
+// import BookingDetails from "../Booking/BookingDetails";
 
 import DeleteReviewModal from "../Reviews/DeleteReviewModal";
 import CreateReviewModal from "../Reviews/CreateNewReviewModal";
@@ -17,7 +17,7 @@ import CreateReviewModal from "../Reviews/CreateNewReviewModal";
 import { PiFishFill } from "react-icons/pi";
 import { LuCat } from "react-icons/lu";
 
-import noimage from "../../../src/assets/no-image-available.jpg";
+import noimage from "../../../public/ptstLogo.png";
 
 import "./SpotDetails.css";
 
