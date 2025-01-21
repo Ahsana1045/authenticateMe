@@ -1,0 +1,112 @@
+#spots-container {
+    /* border: solid 2px #ffc0cb; */
+    flex: 1;
+    /* max-width: calc(25% - 20px); */
+    /* margin: 10px; */
+    /* display:flex; */
+    /* justify-content: space-between; */
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
+    /* display: inline-flex; */
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  /* #spots-container:hover {
+    box-shadow: 2px 2px 5px rgb(230, 230, 230);
+    background-color: rgb(245, 245, 245);
+
+  } */
+
+  .spot-image-container {
+    /* border: solid 2px red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: polygon(
+      30% 10%,
+      70% 10%,
+      100% 0,
+      100% 70%,
+      100% 100%,
+      0 100%,
+      0% 70%,
+      0 0
+    );
+  }
+
+  .spots-image {
+    /* border: dotted 2px green; */
+    width: 375px;
+    height: 375px;
+    border-radius: 5px;
+  }
+
+  .spot-text-container {
+    /* border: dotted 2px yellow; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 15px;
+    color: var(--website-font-color);
+  }
+
+  .spot-titles {
+    /* border: solid 2px orange; */
+  }
+  .location-text {
+    /* border: dashed 2px blue; */
+
+    font-weight: 600;
+    font-size: 18px;
+    padding: 5px 0;
+  }
+
+  .rating {
+    /* border: solid 2px red; */
+    display: flex;
+
+    gap: 3px;
+    font-size: 18px;
+    border: 0;
+  }
+
+  .landing-page-star {
+    /* border: solid 1px blue; */
+    padding-top: 2px;
+    box-sizing: border-box;
+    /* padding: 0; */
+    padding-right: 1px;
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .price {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .price-span {
+    font-weight: 300;
+    font-size: 18px;
+  }
+
+  .spots-post-your-review-button {
+    border: none;
+    background-color: #fc807d;
+    box-shadow: 2px 2px 2px rgb(222, 189, 189);
+    border-radius: 8px;
+    padding: 8px;
+    width: 200px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .spots-post-your-review-button:hover {
+    background-color: #fe7573;
+  }
+
+  #delete-review-button {
+    /* border: solid 2px red; */
+  }

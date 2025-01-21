@@ -1,0 +1,79 @@
+#manage-spots-container {
+    /* border: solid 2px red; */
+  }
+
+  .manage-spots-header {
+    /* border: solid 2px blue; */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .create-a-new-spot-button-manage {
+    border: none;
+    text-decoration: none;
+    background-color: grey;
+    box-shadow: 2px 2px 2px black;
+    font-size: 14px;
+    color: white;
+    padding: 2px;
+    cursor: pointer;
+  }
+
+  .create-a-new-spot-button-manage:hover {
+    background-color: rgb(112, 112, 112);
+  }
+
+  .user-owned-spot {
+    /* border: solid 2px green; */
+    display: inline-flex;
+    flex-direction: column;
+
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  .user-owned-update-delete-buttons {
+    /* border: solid 2px blue; */
+    display: flex;
+    padding-left: 10px;
+    gap: 20px;
+  }
+
+  .user-owned-update-button {
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    background-color:  #fc807d;
+    box-shadow: 2px 2px 2px rgb(222, 189, 189);
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .user-owned-update-button:hover {
+    background-color:  #fe7573;
+  }
+
+  .user-owned-delete-button {
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    background-color:  #fc807d;
+    box-shadow: 2px 2px 2px rgb(222, 189, 189);
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .user-owned-delete-button:hover {
+    background-color:  #fe7573;;
+  }
+
+  @media screen and (min-width: 2400px) {
+    #manage-spots-container {
+      max-width: 2400px;
+      margin: 0 auto;
+    }
+  }

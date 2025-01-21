@@ -1,0 +1,121 @@
+#create-spot-form-container {
+    /* border: dotted 2px blue; */
+  }
+
+  #spot-form-container {
+    /* border: dashed 2px pink; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .create-spot-key-input {
+    /* border: solid 2px green; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  hr {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .errors-object {
+    color: red;
+  }
+
+  #form-country-street-city-state {
+    /* border: dashed 2px red; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .city-state-input {
+    /* border: solid 2px blue; */
+    display: flex;
+  }
+
+  .lat-lng-input {
+    display: flex;
+    gap: 10px;
+  }
+
+  #description-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #create-title-container {
+    /* border: dashed 2px red; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #set-price-container {
+    /* border: dashed 2px red; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .price-input-container {
+    /* border: solid 2px red; */
+    display: flex;
+    gap: 5px;
+    padding-top: 10px;
+  }
+
+  #publish-image-new-spot-container {
+    /* border: solid 2px red; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 10px;
+  }
+
+  #create-spot-button {
+    width: 100px;
+    margin: 0 auto;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px black;
+  }
+
+  #create-update-spot-button {
+    border: none;
+    border-radius: 6px;
+    color: white;
+    box-shadow: 2px 2px 2px rgb(222, 189, 189);
+    margin: 0 auto;
+    padding: 8px;
+
+    /* width: 150px; */
+    cursor: pointer;
+    background-color: #fc807d;
+  }
+
+  #create-update-spot-button:hover {
+    background-color: #fe7573;
+  }
+
+  #create-update-spot-button:disabled {
+    background-color: grey;
+  }
+
+  @media screen and (min-width: 650px) {
+    #spot-form-container {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+  }
