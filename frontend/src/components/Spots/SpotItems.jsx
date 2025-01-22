@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 // import { TiStarFullOutline } from "react-icons/ti";
 import { PiFishFill } from "react-icons/pi";
 
-import noimage from "../../../public/ptstLogo.png";
+import noimage from "../Images/ptstLogo.png";
 import "./SpotItems.css";
 
 const SpotItems = ({ spot }) => {

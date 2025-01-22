@@ -17,7 +17,7 @@ import CreateReviewModal from "../Reviews/CreateNewReviewModal";
 import { PiFishFill } from "react-icons/pi";
 import { LuCat } from "react-icons/lu";
 
-import noimage from "../../../public/ptstLogo.png";
+import noimage from "../Images/ptstLogo.png";
 
 import "./SpotDetails.css";
 

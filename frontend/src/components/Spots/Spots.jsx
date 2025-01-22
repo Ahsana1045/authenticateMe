@@ -3,7 +3,7 @@ import SpotItems from "./SpotItems";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSpots } from "../../store/spotsReducer";
 import { useEffect } from "react";
-import SearchBar from "../Search/SearchBar";
+// import SearchBar from "../Search/SearchBar";
 
 import "./Spots.css";
 
@@ -32,7 +32,7 @@ const Spots = () => {
   return (
     <>
     <section>
-    <SearchBar />
+    {/* <SearchBar /> */}
     <hr />
       <ul>
         <div className="spots-container">

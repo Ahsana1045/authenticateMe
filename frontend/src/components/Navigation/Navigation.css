@@ -1,69 +1,64 @@
-/* Basic styling for the navigation bar */
-/* nav {
-  background-color: #333;
-  padding: 1rem;
-  color: #fff;
-} */
+@import url(https://db.onlinewebfonts.com/c/02d8f1743ede250c7c9865f1574d7cc6?family=Circular+Book);
 
-ul {
+* {
+  font-family: "Circular Book";
+}
+
+:root {
+  --website-font-color: black;
+}
+
+
+#nav-right-side {
   list-style-type: none;
-  padding: 0;
+  /* border: solid 2px pink; */
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  border-bottom: 1px gray solid;
-
-}
-#navWrapper-wrapper{
-  display: block;
-  unicode-bidi: isolate;
-}
-#nav-Wrapper {
-  position: relative;
+  align-items: center;
+  gap: 20px;
 }
 
-li {
-  margin-right: 1rem;
-  position: relative; /* Ensure dropdown is positioned relative to its list item */
-}
-.logo-image {
-  width: 70px;
-  height: 70px;
+.create-a-new-spot {
+  /* border: dotted 2px orange; */
 
-}
-
-a {
-  color: black;
   text-decoration: none;
+  padding: 10px;
+  border-radius: 25px;
+  font-size: 16px;
 }
 
-a:hover {
-  text-decoration: underline;
+.create-a-new-spot:hover {
+  background-color: #EBEBEB;
+
 }
 
-/* Styling for profile dropdown */
-.profile-dropdown {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  top: 100%; /* Position directly below the profile button */
-  left: -100%; /* Align with the left edge of the profile button */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 10; /* Ensure it appears above other content */
-}
 
-.profile-dropdown li {
-  margin-bottom: 0.5rem;
-}
-
-.profile-dropdown li:last-child {
-  margin-bottom: 0;
-}
-
-/* Hide dropdown menu */
 .hidden {
   display: none;
+}
+
+
+#navbar {
+  /* border: solid 2px red; */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  /* border-bottom: solid 1px #e1e1e1; */
+  padding: 10px 30px;
+
+
+}
+
+#home-icon {
+  /* border: solid 2px blue; */
+  text-decoration: none;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 5px;
+   color: #FC807D;
 }

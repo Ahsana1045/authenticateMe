@@ -1,0 +1,94 @@
+.button-normal,
+.button-active {
+  border: solid 1px #dddddd;
+  border-radius: 25px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: box-shadow 0.5s ease;
+}
+
+.button-normal:hover,
+.button-active {
+  box-shadow: 1px 3px 10px #ababab;
+}
+
+.fas.fa-user-circle {
+  /* border: solid 2px pink; */
+  /* padding: 10px 20px; */
+  /* width: 25px;
+    height: 25px; */
+  font-size: 30px;
+  color: #6a6a6a;
+}
+
+.profile-button-lines {
+  /* border: solid 2px green; */
+  width: 20px;
+  height: 20px;
+  color: #585858;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 35px;
+  border: solid 2px pink;
+  list-style-type: none;
+  border: solid 1px #dddddd;
+  border-radius: 15px;
+  background-color: white;
+  padding: 10px;
+  width: 150px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.logout-button-container {
+  border-top: solid 1px #e1e1e1;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.ulClassName {
+  list-style-type: none;
+  border: solid 2px blue;
+}
+
+.logout-button {
+  border: none;
+  color: white;
+  background-color: grey;
+  border-radius: 30px;
+  padding: 10px 15px;
+}
+
+.logout-button:hover {
+background-color: rgb(110, 110, 110);
+  }
+
+#profile-modal-login-signup-container {
+  /* border: solid 2px red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  gap: 10px;
+}
+.sign-up-button,
+.log-in-button {
+  /* border: solid 2px pink; */
+  border: none;
+
+  background-color: transparent;
+  cursor: pointer;
+}

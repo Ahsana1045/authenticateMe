@@ -1,21 +1,17 @@
 // // frontend/src/App.jsx
-
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
-// import LoginFormPage from './components/LoginFormPage';
-// import SignupFormPage from './components/SignupFormPage';
 import Navigation from "./components/Navigation/Navigation";
 import * as sessionActions from "./store/session";
 import { Modal } from "./context/Modal";
-// import Landing from './components/LandingPage/Landing'
 import Spots from "./components/Spots/Spots";
 import SpotDetails from "./components/Spots/SpotDetails";
 import CreateSpotForm from "./components/Spots/CreateNewSpotForm";
 import ManageSpots from "./components/Spots/ManageSpots";
 import UpdateSpotForm from "./components/Spots/UpdateSpotForm";
 import ManageReviews from "./components/Reviews/ManageReviews";
-// import SearchBar from "./components/Search/SearchBar";
+
 
 function Layout() {
   const dispatch = useDispatch();
@@ -31,7 +27,6 @@ function Layout() {
     <>
       <Modal />
       <Navigation isLoaded={isLoaded} />
-      {/* <SearchBar /> */}
       {/* <hr style={{fontWeight: 'lighter'}}/> */}
       {isLoaded && <Outlet />}
       <hr />
@@ -40,10 +35,7 @@ function Layout() {
 }
 
 const router = createBrowserRouter([
-  // {
-  //   path: '/',
-  //   element: <Landing />
-  // },
+
   {
     element: <Layout />,
     children: [
@@ -70,15 +62,7 @@ const router = createBrowserRouter([
       {
         path: "/reviews/current",
         element: <ManageReviews />,
-      },
-      // {
-      //   path: 'login',
-      //   element: <LoginFormModal/>
-      // },
-      // {
-      //   path: 'signup',
-      //   element: <SignupFormPage />
-      // }
+      }
     ],
   },
   {
