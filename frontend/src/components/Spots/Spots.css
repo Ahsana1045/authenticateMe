@@ -1,19 +1,30 @@
 /* src/components/SpotsComponent/Spots.css */
 
 .spots-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 spots per row */
+  gap: 20px;
+  justify-content: center;
+}
+
+
+/* .spots-container {
     padding: 20px;
     text-align: center;
-  }
-
-  .spots-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 20px; /* Gap between items */
-  }
+    grid-template-columns:repeat(4, 1fr) ;
+    gap: 20px;
+  } */
 
+  /* .spots-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  } */
+/*
   .spot-item {
     background-color: #f9f9f9;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+  } */
