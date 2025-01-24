@@ -24,6 +24,8 @@ import "./SpotDetails.css";
 const SpotDetails = () => {
   const dispatch = useDispatch();
   const { spotId } = useParams();
+  console.log("HEERERERERERERERERERERERERER",spotId);
+
   const [isLoaded, setIsLoaded] = useState(false);
   const { closeModal } = useModal();
 
@@ -88,7 +90,6 @@ const SpotDetails = () => {
 
   return (
     <>
-      {/* <h1>ʕ*•ﻌ•ʔฅ</h1> */}
       <div id="spot-detail-container">
         <section className="listing-name-container">
           <h1>{currentSpot.name}</h1>
@@ -193,15 +194,6 @@ const SpotDetails = () => {
             </div>
           </div>
         </section>
-        <hr />
-
-        {/* <section id='booking-container'> */}
-          {/* <div> */}
-            {/* <h1>ʕ*•ﻌ•ʔฅ</h1> */}
-            {/* <BookingDetails /> */}
-          {/* </div> */}
-
-        {/* </section> */}
         <hr />
 
         <section id="reviews-container">

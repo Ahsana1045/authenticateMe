@@ -1,42 +1,23 @@
-/* Customize your signup form styles here */
-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
 
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
+.error-messages {
+  color:red;
+}
+
+.signup-input-separation {
+  padding: 10px 0;
+}
 
 
-  input {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+.signup-modal-button {
+  height: 35px;
+  width: 400px;
+  background-color: red;
+  color: white;
+  box-shadow: 3px 3px 1px black;
+  cursor: pointer;
+}
 
-  button {
-    width: 100%;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 4px;
-    background-color: #28a745;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #218838;
-  }
-
-  #signUpTitle {
-    display: flex;
-    justify-content: center;
-  }
+.signup-modal-button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}

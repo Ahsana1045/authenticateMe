@@ -7,6 +7,46 @@
   justify-content: center;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* space between buttons */
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 5px 10px; /* smaller padding */
+  font-size: 14px; /* smaller text */
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #e0e0e0;
+}
+
+.pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 16px; /* slightly larger text for the page counter */
+}
+
+
+
+/* .spots-container { */
+  /* display: grid; */
+  /* grid-template-columns: repeat(4, 1fr); 4 spots per row */
+  /* gap: 20px; */
+  /* justify-content: center; */
+}
+
 
 /* .spots-container {
     padding: 20px;

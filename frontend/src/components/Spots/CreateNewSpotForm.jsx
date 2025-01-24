@@ -106,11 +106,11 @@ function CreateSpotForm() {
         className="demo-user-modal-button"
         type="submit"
         onClick={() => {
-          setAddress("1234 Stay St.");
-          setCity("San Francisco");
-          setState("California");
-          setCountry("United States of America");
-          setName("Place To Stay Club");
+          setAddress("123 Stay St.");
+          setCity("Haledon");
+          setState("New Jersey");
+          setCountry("USA");
+          setName("Haledon Castle");
           setDescription(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
           );
@@ -118,10 +118,10 @@ function CreateSpotForm() {
           setLat(1);
           setLng(1);
           setPreviewImage(
-            "https://res.cloudinary.com/dfj8lsesn/image/upload/v1717481289/catbnb/Cat%27s%20Corner.png"
+            "https://www.northjersey.com/gcdn/presto/2023/05/23/PNJM/102b5b1a-8205-460c-80fa-0495743b1282-castle_2.jpg"
           );
           setImage1(
-            "https://res.cloudinary.com/dfj8lsesn/image/upload/v1717481395/catbnb/8-PxeIe9RIpGvMIqY_m3gyf8.png"
+            "https://www.northjersey.com/gcdn/presto/2023/05/23/PNJM/d6f330fd-e870-4182-8f04-918e0181988a-Castle_1.jpg?width=700&height=531&fit=crop&format=pjpg&auto=webp"
           );
           setImage2(
             "https://res.cloudinary.com/dfj8lsesn/image/upload/v1717481451/catbnb/8-VHGdSOckSozju5k_q3y8ax.png"

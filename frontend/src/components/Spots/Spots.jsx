@@ -1,3 +1,64 @@
+// import SpotItems from "./SpotItems";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getAllSpots } from "../../store/spotsReducer";
+// import { useEffect, useState } from "react";
+// import { Link } from 'react-router-dom'
+// import "./Spots.css";
+
+// const Spots = () => {
+//   const dispatch = useDispatch();
+//   const spots = useSelector((state) => Object.values(state.spots.allSpots));
+
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const spotsPerPage = 8;
+
+//   useEffect(() => {
+//     dispatch(getAllSpots());
+//   }, [dispatch]);
+
+//   // Pagination logic
+//   const indexOfLastSpot = currentPage * spotsPerPage;
+//   const indexOfFirstSpot = indexOfLastSpot - spotsPerPage;
+//   const currentSpots = spots.slice(indexOfFirstSpot, indexOfLastSpot);
+
+//   const totalPages = Math.ceil(spots.length / spotsPerPage);
+
+//   return (
+//     <>
+//       <section>
+//         <ul>
+//           <div className="spots-container">
+//             {currentSpots.map((spot) => (
+//               <SpotItems spot={spot} key={spot.id} />
+//             ))}
+//           </div>
+//         </ul>
+
+//         {/* Pagination Controls */}
+//         <div className="pagination">
+//           <button
+//             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+//             disabled={currentPage === 1}
+//           >
+//             Previous
+//           </button>
+//           <span> Page {currentPage} of {totalPages} </span>
+//           <button
+//             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+//             disabled={currentPage === totalPages}
+//           >
+//             Next
+//           </button>
+//         </div>
+//       </section>
+//     </>
+//   );
+// };
+
+// export default Spots;
+
+
+//WITHOUT PAGINATION
 import SpotItems from "./SpotItems";
 
 import { useDispatch, useSelector } from "react-redux";
