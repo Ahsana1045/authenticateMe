@@ -50,7 +50,7 @@ function Navigation({ isLoaded }) {
         <NavLink id="home-icon" to="/" style={{fontSize: '20px'}}>
           <img
             src={ptstLogo}
-            style={{ height: "35px", width: "auto" }}
+            style={{ height: "70px", width: "auto" }}
             alt="PTST Logo"
           />
         </NavLink>

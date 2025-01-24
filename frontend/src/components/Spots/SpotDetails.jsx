@@ -13,11 +13,11 @@ import StarDisplay from "./StarsDisplay";
 import DeleteReviewModal from "../Reviews/DeleteReviewModal";
 import CreateReviewModal from "../Reviews/CreateNewReviewModal";
 
-// import { TiStarFullOutline } from "react-icons/ti";
 import { PiFishFill } from "react-icons/pi";
 import { LuCat } from "react-icons/lu";
 
 import noimage from "../Images/ptstLogo.png";
+import dogImage from "../Images/Confused-dog.png"
 
 import "./SpotDetails.css";
 
@@ -35,7 +35,7 @@ const SpotDetails = () => {
 
   // Get the reviews for the current spot
   const reviews = useSelector((state) => state.reviews.Reviews || []);
-  // console.log("SHOW DEM REVIEWS", reviews);
+  // console.log("SHOWWWWWWWWWWWWW REVIEWS", reviews);
 
   const user = useSelector((state) => state.session.user);
   // console.log(`WHOOOOOOOOOOOOOOO DIS`, user);
@@ -65,7 +65,7 @@ const SpotDetails = () => {
   // Check if this user has already left a review on the spot
   const userHasReview = reviews.find((review) => review.userId === user?.id);
 
-  // LOADING CAT If data is not loaded yet and show a loading message
+  // Load DOG If data is not loaded yet and show a loading message
   if (!isLoaded || !currentSpot)
     return (
       <div
@@ -77,11 +77,11 @@ const SpotDetails = () => {
           alignItems: "center",
         }}
       >
-        <h1>Loading right meow...</h1>
+        <h1>We&apos;re almost rooof!</h1>
         <img
           style={{ width: "1000px" }}
-          src="https://res.cloudinary.com/dfj8lsesn/image/upload/v1717520571/catbnb/loading-cat_egosvf.gif"
-          alt="Loading Cat"
+          src={dogImage}
+          alt="Dawg Confused"
         />
       </div>
     );
@@ -195,13 +195,13 @@ const SpotDetails = () => {
         </section>
         <hr />
 
-        <section id='booking-container'>
-          <div>
+        {/* <section id='booking-container'> */}
+          {/* <div> */}
             {/* <h1>ʕ*•ﻌ•ʔฅ</h1> */}
-            <BookingDetails />
-          </div>
+            {/* <BookingDetails /> */}
+          {/* </div> */}
 
-        </section>
+        {/* </section> */}
         <hr />
 
         <section id="reviews-container">
