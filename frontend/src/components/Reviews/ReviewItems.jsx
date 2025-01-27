@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { TiStarFullOutline } from "react-icons/ti";
 
-import noimage from "../../../src/assets/no-image-available.jpg";
+import noimage from "../Images/ptstLogo.png";
 // import "./ReviewItems.css";
 
 const ReviewItems = ({ spot }) => {

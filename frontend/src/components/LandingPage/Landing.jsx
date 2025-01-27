@@ -18,14 +18,14 @@ export default function Landing() {
       <h1 className="landing-title">PTST</h1>
       <img
         className="feijai-landing-image"
-        src="https://res.cloudinary.com/dfj8lsesn/image/upload/v1717368083/catbnb/feijai.jpg"
-        alt="kitty-image"
+        src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"
+        alt="dawg-image"
       />
-      <h2>Hello Everynyan!</h2>
+      <h2>We Have A Place To Stay Tonight!</h2>
 
       <div onClick={handleSubmit}>
       <button className="enter-website-button"
-       ><PiPawPrintFill /> Look at some spots! <PiPawPrintFill /></button>
+       ><PiPawPrintFill /> Look at some places! <PiPawPrintFill /></button>
        </div>
 
     </div>

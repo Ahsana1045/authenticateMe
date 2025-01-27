@@ -13,8 +13,8 @@ import StarDisplay from "./StarsDisplay";
 import DeleteReviewModal from "../Reviews/DeleteReviewModal";
 import CreateReviewModal from "../Reviews/CreateNewReviewModal";
 
-import { PiFishFill } from "react-icons/pi";
-import { LuCat } from "react-icons/lu";
+import { LiaHouseDamageSolid } from "react-icons/lia";
+import { FaHouseUser } from "react-icons/fa";
 
 import noimage from "../Images/ptstLogo.png";
 import dogImage from "../Images/Confused-dog.png"
@@ -24,7 +24,7 @@ import "./SpotDetails.css";
 const SpotDetails = () => {
   const dispatch = useDispatch();
   const { spotId } = useParams();
-  console.log("HEERERERERERERERERERERERERER",spotId);
+  // console.log("HEERERERERERERERERERERERERER",spotId);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const { closeModal } = useModal();
@@ -32,7 +32,7 @@ const SpotDetails = () => {
   // Get all spots and current spot from the Redux store
   // const spots = useSelector((state) => state.spots.allSpots[spotId]);
   // console.log("ALLLLLLLL SPOTS", spots);
-  const currentSpot = useSelector((state) => state.spots.currentSpot[0]);
+  const currentSpot = useSelector((state) => state.spots.currentSpot);
   // console.log("%c Spot Details: currrrrrrrrrrrrrrrrrrrrrrrrrrrrrent spot","color: orange", currentSpot)
 
   // Get the reviews for the current spot
@@ -79,7 +79,7 @@ const SpotDetails = () => {
           alignItems: "center",
         }}
       >
-        <h1>We&apos;re almost rooof!</h1>
+        <h1>We&apos;re almost wooof!</h1>
         <img
           style={{ width: "1000px" }}
           src={dogImage}
@@ -137,8 +137,8 @@ const SpotDetails = () => {
             <h2 className="owner-info">
               Hosted by {currentSpot?.Owner?.firstName}{" "}
               {currentSpot?.Owner?.lastName}
-              <div className='cat-icon'>
-              <LuCat />
+              <div className='house-icon'>
+              <FaHouseUser />
 
               </div>
             </h2>
@@ -172,7 +172,7 @@ const SpotDetails = () => {
               <div className="reviews-details">
                 <div className="spot-details-star">
                   {/* <TiStarFullOutline /> */}
-                  <PiFishFill />
+                  <LiaHouseDamageSolid />
                 </div>
                 <div className="spot-details-reviews">
                   {isNaN(avgRating) || avgRating === undefined
@@ -231,9 +231,9 @@ const SpotDetails = () => {
               user?.id !== currentSpot.ownerId &&
               currentSpot.Owner && <span>Be the first to post a review!</span>}
           </div>
-          <div className='review-from-cats-outer-container'>
+          <div className='review-from-outer-container'>
 
-          <div className="reviews-from-the-cats">
+          <div className="reviews-from-the-people">
             {reviews &&
               reviews.length > 0 &&
               (() => {

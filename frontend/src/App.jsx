@@ -5,8 +5,8 @@ import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
 import * as sessionActions from "./store/session";
 import { Modal } from "./context/Modal";
-import Spots from "./components/Spots/Spots";
-import SpotDetails from "./components/Spots/SpotDetails";
+import Spots from "./components/Spots/Spots.jsx";
+import SpotDetails from "./components/Spots/SpotDetails.jsx";
 import CreateSpotForm from "./components/Spots/CreateNewSpotForm";
 import ManageSpots from "./components/Spots/ManageSpots";
 import UpdateSpotForm from "./components/Spots/UpdateSpotForm";
@@ -27,7 +27,6 @@ function Layout() {
     <>
       <Modal />
       <Navigation isLoaded={isLoaded} />
-      {/* <hr style={{fontWeight: 'lighter'}}/> */}
       {isLoaded && <Outlet />}
       <hr />
     </>

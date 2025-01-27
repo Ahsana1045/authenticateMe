@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-// import { TiStarFullOutline } from "react-icons/ti";
-import { PiFishFill } from "react-icons/pi";
+import { IoMdStar } from "react-icons/io";
+
 
 import noimage from "../Images/ptstLogo.png";
 import "./SpotItems.css";
@@ -35,7 +35,7 @@ const SpotItems = ({ spot }) => {
               <div className="rating">
                 <div className='landing-page-star'>
                 {/* <TiStarFullOutline /> */}
-                <PiFishFill />{" "}
+                <IoMdStar />{""}
                 </div>
                 {isNaN(spot.avgRating) || spot.avgRating === undefined
                   ? "New"

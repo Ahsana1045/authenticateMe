@@ -1,44 +1,37 @@
-import { PiFishFill, PiFishDuotone, PiFish } from "react-icons/pi";
+import { IoIosStarOutline, IoMdStar, IoMdStarHalf } from "react-icons/io";
 
 const StarDisplay = ({ numStars }) => {
   const showStars = (numStars) => {
     const stars = [];
     const maxStars = 5;
 
-    // Check how many should be filled, duotone, and empty
+    // Clamp the rating between 0 and 5
     const rating = Math.min(Math.max(numStars, 0), maxStars);
-    // Fully filled stars
+
+    // Calculate full and half-filled stars
     const numFilledStars = Math.floor(rating);
+    const hasHalfStar = rating - numFilledStars >= 0.5;
+    const numEmptyStars = maxStars - numFilledStars - (hasHalfStar ? 1 : 0);
 
-    // Duotone star if there's a decimal
-    const duotoneStar = rating - numFilledStars > 0 ? <PiFishDuotone /> : null;
-
-    // Empty stars
-    const numEmptyStars = maxStars - numFilledStars - (duotoneStar ? 1 : 0);
-
-    // Filled stars
+    // Add filled stars
     for (let i = 0; i < numFilledStars; i++) {
-      stars.push(<PiFishFill key={`filled-${i}`} />);
+      stars.push(<IoMdStar key={`filled-${i}`} />);
     }
 
-    // Duotone star
-    if (duotoneStar) {
-      stars.push(duotoneStar);
+    // Add half-filled star if needed
+    if (hasHalfStar) {
+      stars.push(<IoMdStarHalf key="half" />);
     }
 
-    // Empty stars
+    // Add empty stars
     for (let i = 0; i < numEmptyStars; i++) {
-      stars.push(<PiFish key={`empty-${i}`} />);
+      stars.push(<IoIosStarOutline key={`empty-${i}`} />);
     }
 
     return stars;
   };
 
-  return (
-    <div className="star-display">
-      {showStars(numStars)}
-    </div>
-  );
+  return <div className="star-display">{showStars(numStars)}</div>;
 };
 
 export default StarDisplay;

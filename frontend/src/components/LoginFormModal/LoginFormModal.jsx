@@ -102,8 +102,8 @@ function LoginFormModal() {
         style={{cursor:'pointer'}}
           type="submit"
           onClick={() => {
-            setCredential("Mama");
-            setPassword("password");
+            setCredential("FakeUser1");
+            setPassword("password2");
           }}
         >
           {" "}

@@ -68,7 +68,7 @@
   align-items: center;
   gap: 10px;
 }
-.cat-icon {
+.house-icon {
 padding-top: 8px;
 }
 
@@ -164,7 +164,7 @@ padding-top: 8px;
 }
 
 
-.review-from-cats-outer-container {
+.review-from-outer-container {
   padding: 20px;
   border: dashed 2px #fba7a6;
   border-radius: 20px;
@@ -174,7 +174,7 @@ padding-top: 8px;
   /* outline: 2px solid grey; */
   /* outline-offset: -2px; */
 }
-.reviews-from-the-cats {
+.reviews-from-the-people {
   /* border: solid 2px pink; */
   display: flex;
   flex-direction: column;
