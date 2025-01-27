@@ -114,21 +114,21 @@ function CreateSpotForm() {
           setDescription(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
           );
-          setPrice(1);
-          setLat(1);
-          setLng(1);
+          setPrice(180);
+          setLat(40);
+          setLng(45);
           setPreviewImage(
             "https://www.northjersey.com/gcdn/presto/2023/05/23/PNJM/102b5b1a-8205-460c-80fa-0495743b1282-castle_2.jpg"
           );
           setImage1(
-            "https://www.northjersey.com/gcdn/presto/2023/05/23/PNJM/d6f330fd-e870-4182-8f04-918e0181988a-Castle_1.jpg?width=700&height=531&fit=crop&format=pjpg&auto=webp"
+            "https://www.northjersey.com/gcdn/presto/2023/05/23/PNJM/6ca9cda4-e120-42b5-86b1-794fd239f354-0001.jpg"
           );
           setImage2(
-            "https://res.cloudinary.com/dfj8lsesn/image/upload/v1717481451/catbnb/8-VHGdSOckSozju5k_q3y8ax.png"
+            "https://www.northjersey.com/gcdn/presto/2023/05/24/PNJM/eff6e76b-f9b1-46ce-b13c-98df08ad9f94-Scan0033_page-0001.jpg"
           );
           setImage3(
-            "https://res.cloudinary.com/dfj8lsesn/image/upload/v1717386122/catbnb/r-cat-manor_uesoqf.png"
-          );
+            "https://www.northjersey.com/gcdn/presto/2023/05/24/PNJM/2a452b3e-2861-4508-a984-39efbb71dc13-Scan0034_page-0001.jpg"
+                    );
           setImage4(
             "https://res.cloudinary.com/dfj8lsesn/image/upload/v1717386117/catbnb/r-cat-palace_rkbflt.png"
           );
@@ -155,13 +155,13 @@ function CreateSpotForm() {
           setLat(1);
           setLng(1);
           setPreviewImage(
-            "https://res.cloudinary.com/dfj8lsesn/image/upload/v1717482655/catbnb/8-ATANKZhXomcJ7Tc_rqhse8.png"
+            "https://www.northjersey.com/gcdn/presto/2023/05/23/PNJM/102b5b1a-8205-460c-80fa-0495743b1282-castle_2.jpg"
           );
           setImage1(
-            "https://res.cloudinary.com/dfj8lsesn/image/upload/v1717481451/catbnb/8-VHGdSOckSozju5k_q3y8ax.png"
+            "https://www.northjersey.com/gcdn/presto/2023/05/23/PNJM/6ca9cda4-e120-42b5-86b1-794fd239f354-0001.jpg"
           );
           setImage2(
-            "https://res.cloudinary.com/dfj8lsesn/image/upload/v1717481395/catbnb/8-PxeIe9RIpGvMIqY_m3gyf8.png"
+            "https://www.northjersey.com/gcdn/presto/2023/05/24/PNJM/eff6e76b-f9b1-46ce-b13c-98df08ad9f94-Scan0033_page-0001.jpg"
           );
 
         }}

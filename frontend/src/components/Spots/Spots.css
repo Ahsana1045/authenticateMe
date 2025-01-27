@@ -3,9 +3,12 @@
 .spots-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 spots per row */
-  gap: 20px;
-  justify-content: center;
+  gap: 10px;
+  padding: 20px; /* Add padding */
+  max-width: 100%; /* Prevent overflow */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
+
 
 .pagination {
   display: flex;
