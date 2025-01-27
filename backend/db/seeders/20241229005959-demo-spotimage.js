@@ -15,51 +15,51 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     options.tableName = "SpotImages"
     return queryInterface.bulkInsert(options, [
-      {
-        spotId: 1, // The ID of the spot associating this image w
-        url: 'https://media.istockphoto.com/id/1136437406/photo/san-francisco-skyline-with-oakland-bay-bridge-at-sunset-california-usa.jpg', // URL for the spot image
-        preview: true, // Whether this is the preview image
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        spotId: 2,
-        url: 'https://example2.com/another-spot-image.jpg',
-        preview: false,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
+      // {
+      //   spotId: 1, // The ID of the spot associating this image w
+      //   url: 'https://media.istockphoto.com/id/1136437406/photo/san-francisco-skyline-with-oakland-bay-bridge-at-sunset-california-usa.jpg', // URL for the spot image
+      //   preview: true, // Whether this is the preview image
+      //   createdAt: new Date(),
+      //   updatedAt: new Date()
+      // },
+      // {
+      //   spotId: 2,
+      //   url: 'https://example2.com/another-spot-image.jpg',
+      //   preview: false,
+      //   createdAt: new Date(),
+      //   updatedAt: new Date()
+      // },
       {
           spotId: 1,
-          url: 'https://media.istockphoto.com/id/1136437406/photo/san-francisco-skyline-with-oakland-bay-bridge-at-sunset-california-usa.jpg',
+          url: 'https://a.travel-assets.com/findyours-php/viewfinder/images/res70/476000/476362-Downtown-San-Francisco.jpg',
           preview: true,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           spotId: 1,
-          url: 'https://media.istockphoto.com/id/1204114267/photo/san-francisco-downtown.jpg',
+          url: 'https://images.squarespace-cdn.com/content/v1/5c7f5f60797f746a7d769cab/1708063049157-NMFAB7KBRBY2IG2BWP4E/the+golden+gate+bridge+san+francisco.jpg',
           preview: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           spotId: 1,
-          url: 'https://media.istockphoto.com/id/1144986138/photo/modern-office-building-in-san-francisco.jpg',
+          url: 'https://cdn.britannica.com/51/178051-050-3B786A55/San-Francisco.jpg',
           preview: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           spotId: 1,
-          url: 'https://media.istockphoto.com/id/1284944135/photo/san-francisco-skyline-with-fog.jpg',
+          url: 'https://media.cntraveler.com/photos/648397a56702ed16faad7a3b/3:2/w_1600%2Cc_limit/San%2520Francisco%2520Things%2520to%2520Do%2520UPDATE_GettyImages-1406939930.jpg',
           preview: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           spotId: 1,
-          url: 'https://media.istockphoto.com/id/157401568/photo/golden-gate-bridge-san-francisco-california.jpg',
+          url: 'https://drupal-prod.visitcalifornia.com/sites/default/files/styles/fluid_1920/public/2023-02/VC_SEO-San-Francisco-Family_gty-973975474-RF_1280x640.jpg',
           preview: false,
           createdAt: new Date(),
           updatedAt: new Date()
